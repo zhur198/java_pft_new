@@ -5,23 +5,21 @@ package ru.stqa.pft.sandbox;
  */
 public class Points {
 
-  public double x;
-  public double y;
+  public double x1;
+  public double y1;
+  public double x2;
+  public double y2;
 
-  public Points (double x, double y) {
-    this.x = x;
-    this.y = y;
+  public Points (double x1, double y1, double x2, double y2) {
+    this.x1 = x1;
+    this.y1 = y1;
+    this.x2 = x2;
+    this.y2 = y2;
   }
-//
-//public static void main(String[] args) {
-//  Points p1 = new Points(7.5);
-//  Points p2 = new Points();
-//  System.out.println("Distance between p1 and p2 = " + distance(p1, p2));
-//}
-//
-//  public static double distance (Points p1, Points p2) {
-//
-//    return Math.sqrt((p1.x-p2.x)*(p1.x-p2.x) + (p1.y-p2.y)*(p1.y-p2.y));
-//
-//  }
+
+  public double distance () {
+
+    return Math.sqrt((this.x1-this.x2)*(this.x1-this.x2) + (this.y1-this.y2)*(this.y1-this.y2));
+
+  }
 }

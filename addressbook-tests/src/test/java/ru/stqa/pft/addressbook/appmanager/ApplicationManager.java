@@ -3,7 +3,6 @@ package ru.stqa.pft.addressbook.appmanager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import ru.stqa.pft.addressbook.model.ContactData;
 
 import java.util.concurrent.TimeUnit;
 
@@ -14,6 +13,7 @@ public class ApplicationManager {
   FirefoxDriver wd;
 
 
+  private ContactHelper contactHelper;
   private GroupHelper groupHelper;
 
   public static boolean isAlertPresent(FirefoxDriver wd) {
@@ -30,6 +30,7 @@ public class ApplicationManager {
     wd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
     wd.get("http://localhost/addressbook/index.php");
     groupHelper = new GroupHelper(wd);
+    contactHelper = new ContactHelper(wd);
     login("admin", "secret");
   }
 
@@ -47,31 +48,6 @@ public class ApplicationManager {
     wd.findElement(By.linkText("groups")).click();
   }
 
-  public void submitNewContactForm() {
-      wd.findElement(By.xpath("//div[@id='content']/form/input[21]")).click();
-  }
-
-  public void fillNewContactForm(ContactData contactData) {
-      wd.findElement(By.name("firstname")).click();
-      wd.findElement(By.name("firstname")).clear();
-      wd.findElement(By.name("firstname")).sendKeys(contactData.getFirstname());
-      wd.findElement(By.name("middlename")).click();
-      wd.findElement(By.name("middlename")).sendKeys(contactData.getMiddlename());
-      wd.findElement(By.name("lastname")).click();
-      wd.findElement(By.name("lastname")).clear();
-      wd.findElement(By.name("lastname")).sendKeys(contactData.getLastname());
-      wd.findElement(By.name("home")).click();
-      wd.findElement(By.name("home")).clear();
-      wd.findElement(By.name("home")).sendKeys(contactData.getHomephone());
-      wd.findElement(By.name("email")).click();
-      wd.findElement(By.name("email")).clear();
-      wd.findElement(By.name("email")).sendKeys(contactData.getEmail());
-  }
-
-  public void openNewContactPage() {
-      wd.findElement(By.linkText("add new")).click();
-  }
-
   public void gotoHomePage() {
     wd.findElement(By.linkText("home")).click();
   }
@@ -82,5 +58,9 @@ public class ApplicationManager {
 
   public GroupHelper getGroupHelper() {
     return groupHelper;
+  }
+
+  public ContactHelper getContactHelper() {
+    return contactHelper;
   }
 }

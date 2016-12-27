@@ -6,7 +6,7 @@ import ru.stqa.pft.addressbook.model.ContactData;
 /**
  * Created by zhur198 on 12/27/16.
  */
-public class ContactModification extends TestBase{
+public class ContactModificationTests extends TestBase{
 
   @Test
 

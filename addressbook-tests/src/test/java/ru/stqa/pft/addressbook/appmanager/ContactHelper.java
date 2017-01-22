@@ -59,9 +59,9 @@ public class ContactHelper extends HelperBase {
     wd.switchTo().alert().accept();
   }
 
-  public void createContact(ContactData contact, boolean creation) {
+  public void createContact(ContactData contact) {
     openNewContactPage();
-    fillNewContactForm(contact, creation);
+    fillNewContactForm(contact, true);
     submitNewContactForm();
     returnToContactPage();
   }

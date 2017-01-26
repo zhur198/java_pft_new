@@ -13,6 +13,11 @@ public class PrimeTests {
     Assert.assertTrue(Primes.isPrimeFast(Integer.MAX_VALUE));
   }
 
+//  @Test
+//  public void testPrimeSlow () {
+//    Assert.assertTrue(Primes.isPrime(Integer.MAX_VALUE));
+//  }
+
   @Test (enabled = false)
   public void testPrimeLong () {
     long n = Integer.MAX_VALUE;

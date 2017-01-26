@@ -25,6 +25,16 @@ public class Primes {
     return true;
   }
 
+//  public static boolean isPrimeFast1 (int n) {
+//
+//    for (int i = 2; i < n/2; i++) {
+//      if (n % i == 0) {
+//        return false;
+//      }
+//    }
+//    return true;
+//  }
+
 //  public static boolean isPrimeWhile1 (int n) {
 //
 //    int i = 2;

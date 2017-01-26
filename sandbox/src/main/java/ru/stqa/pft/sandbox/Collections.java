@@ -27,7 +27,7 @@ public class Collections {
 //    languages.add("C#");
 //    languages.add("Python");
 //    languages.add("PHP");
-    
+
 //    for (int i = 0; i < langs.length; i++) {
 //      System.out.println(" I want to learn " + langs[i]);
 

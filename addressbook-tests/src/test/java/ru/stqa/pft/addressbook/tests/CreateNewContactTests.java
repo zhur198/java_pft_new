@@ -26,6 +26,10 @@ public class CreateNewContactTests extends TestBase{
         Assert.assertEquals(after.size(), before.size() + 1);
 //
         before.add(contact);
+
+        //    Comparator<? super ContactData> byLastname = (c1, c2) -> String.compare(c1.getLastname(), c2.getLastname());
+//    before.sort(byLastname);
+//    after.sort(byLastname);
         Assert.assertEquals(before, after);
     }
 }

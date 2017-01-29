@@ -9,17 +9,14 @@ import java.util.List;
 
 public class CreateNewContactTests extends TestBase{
 
-    @Test
+    @Test (enabled = false)
     public void testCreateNewContact() {
 
         app.getNavigationHelper().gotoHomePage();
         List<ContactData> before = app.getContactHelper().getContactList();
 //    int before = app.getContactHelper().getContactCount();
-        app.getContactHelper().openNewContactPage();
         ContactData contact = new ContactData("Ivan", "M", "Ivaniv", "407-499-0809", "ivaniv@somemail.com", "test1");
-        app.getContactHelper().fillNewContactForm(contact, true);
-        app.getContactHelper().submitNewContactForm();
-        app.getNavigationHelper().gotoHomePage();
+        app.getContactHelper().createContact(contact);
 
         List<ContactData> after = app.getContactHelper().getContactList();
 //    int after = app.getContactHelper().getContactCount();

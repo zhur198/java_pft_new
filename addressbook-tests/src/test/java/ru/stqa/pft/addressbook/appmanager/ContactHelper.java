@@ -11,7 +11,9 @@ import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.GroupData;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by zhur198 on 12/27/16.
@@ -47,6 +49,10 @@ public class ContactHelper extends HelperBase {
   public void selectContact(int index) {
     wd.findElements(By.name("selected[]")).get(index).click();
 //    click(By.name("selected[]"));
+  }
+
+  public void selectContactById (int id) {
+    wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
   }
 
   public void editContact() {
@@ -87,6 +93,13 @@ public class ContactHelper extends HelperBase {
     returnToContactPage();
   }
 
+  public void delete(ContactData contact) {
+    selectContactById(contact.getId());
+    deleteContact();
+    closeAlertWindow();
+    returnToContactPage();
+  }
+
   private void returnToContactPage() {
     click(By.linkText("home"));
   }
@@ -107,10 +120,22 @@ public class ContactHelper extends HelperBase {
       int id = Integer.parseInt(cells.get(0).findElement(By.tagName("input")).getAttribute("value"));
       String lastname = cells.get(1).getText();
       String firstname = cells.get(2).getText();
-//      System.out.println(lastname);
-//      ContactData contact = new ContactData().withFirstname(firstname).withLastname(lastname);
       contacts.add(new ContactData().withId(id).withFirstname(firstname).withLastname(lastname));
     }
     return contacts;
   }
+
+  public Set<ContactData> all() {
+    Set<ContactData> contacts = new HashSet<ContactData>();
+    List<WebElement> rows = wd.findElements(By.name("entry"));
+    for (WebElement row : rows) {
+      List<WebElement> cells = row.findElements(By.tagName("td"));
+      int id = Integer.parseInt(cells.get(0).findElement(By.tagName("input")).getAttribute("value"));
+      String lastname = cells.get(1).getText();
+      String firstname = cells.get(2).getText();
+      contacts.add(new ContactData().withId(id).withFirstname(firstname).withLastname(lastname));
+    }
+    return contacts;
+  }
+
 }

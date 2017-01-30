@@ -6,6 +6,7 @@ import ru.stqa.pft.addressbook.model.ContactData;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.Set;
 
 public class CreateNewContactTests extends TestBase{
 
@@ -13,20 +14,18 @@ public class CreateNewContactTests extends TestBase{
     public void testCreateNewContact() {
 
         app.goTo().homePage();
-        List<ContactData> before = app.contact().list();
+        Set<ContactData> before = app.contact().all();
 //    int before = app.contact().getContactCount();
         ContactData contact = new ContactData().withFirstname("Ivan").withMiddlename("M").withLastname("Ivaniv").withHomephone("407-499-0809").withEmail("ivaniv@somemail.com").withGroup("test1");
         app.contact().create(contact);
 
-        List<ContactData> after = app.contact().list();
+        Set<ContactData> after = app.contact().all();
 //    int after = app.contact().getContactCount();
         Assert.assertEquals(after.size(), before.size() + 1);
 
-//        contact.withId(after.stream().max((o1, o2) -> Integer.compare(o1.getId(), o2.getId())).get().getId());
+        contact.withId(after.stream().mapToInt((c) -> c.getId()).max().getAsInt());
         before.add(contact);
-        Comparator<? super ContactData> byId = (c1, c2) -> Integer.compare(c1.getId(), c2.getId());
-        before.sort(byId);
-        after.sort(byId);
+//        Comparator<? super ContactData> byId = (c1, c2) -> Integer.compare(c1.getId(), c2.getId());
         Assert.assertEquals(before, after);
     }
 }

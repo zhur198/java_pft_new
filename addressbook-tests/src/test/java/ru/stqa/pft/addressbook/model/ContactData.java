@@ -1,21 +1,21 @@
 package ru.stqa.pft.addressbook.model;
 
 public class ContactData {
-  private final String firstname;
-  private final String middlename;
-  private final String lastname;
-  private final String homephone;
-  private final String email;
+  private String firstname;
+  private String middlename;
+  private String lastname;
+  private String homephone;
+  private String email;
   private String group;
 
-  public ContactData(String firstname, String middlename, String lastname, String homephone, String email, String group) {
-    this.firstname = firstname;
-    this.middlename = middlename;
-    this.lastname = lastname;
-    this.homephone = homephone;
-    this.email = email;
-    this.group = group;
-  }
+//  public ContactData(String firstname, String middlename, String lastname, String homephone, String email, String group) {
+//    this.firstname = firstname;
+//    this.middlename = middlename;
+//    this.lastname = lastname;
+//    this.homephone = homephone;
+//    this.email = email;
+//    this.group = group;
+//  }
 
   public String getFirstname() {
     return firstname;
@@ -23,6 +23,36 @@ public class ContactData {
 
   public String getMiddlename() {
     return middlename;
+  }
+
+  public ContactData withGroup(String group) {
+    this.group = group;
+    return this;
+  }
+
+  public ContactData withFirstname(String firstname) {
+    this.firstname = firstname;
+    return this;
+  }
+
+  public ContactData withMiddlename(String middlename) {
+    this.middlename = middlename;
+    return this;
+  }
+
+  public ContactData withLastname(String lastname) {
+    this.lastname = lastname;
+    return this;
+  }
+
+  public ContactData withHomephone(String homephone) {
+    this.homephone = homephone;
+    return this;
+  }
+
+  public ContactData withEmail(String email) {
+    this.email = email;
+    return this;
   }
 
   public String getLastname() {

@@ -6,27 +6,29 @@ public class ContactData {
   private String firstname;
   private String middlename;
   private String lastname;
-  private String homephone;
+  private String homePhone;
   private String email;
   private String group;
+  private String mobilePhone;
+  private String workPhone;
 
-//  public ContactData(String firstname, String middlename, String lastname, String homephone, String email, String group) {
+//  public ContactData(String firstname, String middlename, String lastname, String homePhone, String email, String group) {
 
   //  this.id = Integer.MAX_VALUE;
 //    this.firstname = firstname;
 //    this.middlename = middlename;
 //    this.lastname = lastname;
-//    this.homephone = homephone;
+//    this.homePhone = homePhone;
 //    this.email = email;
 //    this.group = group;
 //  }
 
-  //  public ContactData(int id, String firstname, String middlename, String lastname, String homephone, String email, String group) {
+  //  public ContactData(int id, String firstname, String middlename, String lastname, String homePhone, String email, String group) {
   //  this.id = id;
 //    this.firstname = firstname;
 //    this.middlename = middlename;
 //    this.lastname = lastname;
-//    this.homephone = homephone;
+//    this.homePhone = homePhone;
 //    this.email = email;
 //    this.group = group;
 //  }
@@ -86,8 +88,18 @@ public class ContactData {
     return this;
   }
 
-  public ContactData withHomephone(String homephone) {
-    this.homephone = homephone;
+  public ContactData withHomePhone(String homephone) {
+    this.homePhone = homephone;
+    return this;
+  }
+
+  public ContactData withMobilePhone(String mobilePhone) {
+    this.mobilePhone = mobilePhone;
+    return this;
+  }
+
+  public ContactData withWorkPhone(String workPhone) {
+    this.workPhone = workPhone;
     return this;
   }
 
@@ -110,8 +122,8 @@ public class ContactData {
     return lastname;
   }
 
-  public String getHomephone() {
-    return homephone;
+  public String getHomePhone() {
+    return homePhone;
   }
 
   public String getEmail() {

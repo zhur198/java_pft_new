@@ -15,7 +15,8 @@ public class CreateNewContactTests extends TestBase{
 
         app.goTo().homePage();
         Contacts before = app.contact().all();
-        ContactData contact = new ContactData().withFirstname("Ivan").withMiddlename("M").withLastname("Ivaniv").withHomePhone("407-499-0809").withEmail("ivaniv@somemail.com").withGroup("test1");
+        ContactData contact = new ContactData().withFirstname("Ivan").withMiddlename("M").withLastname("Ivaniv").withHomePhone("407-499-0809")
+                .withEmail("ivaniv@somemail.com").withGroup("test1").withWorkPhone("356543").withMobilePhone("999999999");
         app.contact().create(contact);
         assertThat(app.contact().count(), equalTo(before.size() + 1));
         Contacts after = app.contact().all();
@@ -28,7 +29,8 @@ public class CreateNewContactTests extends TestBase{
 
         app.goTo().homePage();
         Contacts before = app.contact().all();
-        ContactData contact = new ContactData().withFirstname("Ivan'").withMiddlename("M").withLastname("Ivaniv").withHomePhone("407-499-0809").withEmail("ivaniv@somemail.com").withGroup("test1");
+        ContactData contact = new ContactData().withFirstname("Ivan'").withMiddlename("M").withLastname("Ivaniv").withHomePhone("407-499-0809").withEmail("ivaniv@somemail.com")
+                .withGroup("test1").withWorkPhone("356543").withMobilePhone("999999999");
         app.contact().create(contact);
         assertThat(app.contact().count(), equalTo(before.size()));
         Contacts after = app.contact().all();

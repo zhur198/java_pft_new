@@ -135,7 +135,7 @@ public class ContactHelper extends HelperBase {
 //      contacts.add(new ContactData().withId(id).withFirstname(firstname).withLastname(lastname)
 //              .withHomePhone(phones[0]).withMobilePhone(phones[1]).withWorkPhone(phones[2]).withEmail(email).withAddress(address));
       contacts.add(new ContactData().withId(id).withFirstname(firstname).withLastname(lastname)
-              .withAllPhones(allPhones));
+              .withAllPhones(allPhones).withEmail(email).withAddress(address));
     }
     return contacts;
   }
@@ -153,9 +153,11 @@ public class ContactHelper extends HelperBase {
       int id = Integer.parseInt(cells.get(0).findElement(By.tagName("input")).getAttribute("value"));
       String lastname = cells.get(1).getText();
       String firstname = cells.get(2).getText();
-      String[] phones = cells.get(5).getText().split("\n");
+      String allPhones = cells.get(5).getText();
+      String email = cells.get(4).getText();
+      String address = cells.get(3).getText();
       contactCache.add(new ContactData().withId(id).withFirstname(firstname).withLastname(lastname)
-              .withHomePhone(phones[0]).withMobilePhone(phones[1]).withWorkPhone(phones[2]));
+              .withAllPhones(allPhones).withEmail(email).withAddress(address));
     }
     return new Contacts(contactCache);
   }
@@ -168,7 +170,7 @@ public class ContactHelper extends HelperBase {
     String mobile = wd.findElement(By.name("mobile")).getAttribute("value");
     String work = wd.findElement(By.name("work")).getAttribute("value");
     String email = wd.findElement(By.name("email")).getAttribute("value");
-    String address = wd.findElement(By.name("address")).getAttribute("value");
+    String address = wd.findElement(By.name("address")).getText();
     wd.navigate().back();
     return new ContactData().withId(contact.getId()).withFirstname(firstname).withLastname(lastname).withHomePhone(home)
             .withMobilePhone(mobile).withWorkPhone(work).withEmail(email).withAddress(address);

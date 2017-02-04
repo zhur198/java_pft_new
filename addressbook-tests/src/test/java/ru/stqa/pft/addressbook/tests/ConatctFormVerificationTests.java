@@ -20,7 +20,7 @@ public class ConatctFormVerificationTests extends TestBase{
     app.goTo().homePage();
     if (app.contact().alls().size() == 0) {
       app.contact().create(new ContactData().withFirstname("Ivan").withMiddlename("M").withLastname("Ivaniv").withHomePhone("4074990809")
-              .withEmail("ivaniv@somemail.com").withGroup("test1").withWorkPhone("356543").withMobilePhone("999999999"));
+              .withEmail("ivaniv@somemail.com").withWorkPhone("356543").withMobilePhone("999999999"));
     }
   }
 

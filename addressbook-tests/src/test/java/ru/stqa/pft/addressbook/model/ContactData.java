@@ -11,6 +11,7 @@ public class ContactData {
   private String group;
   private String mobilePhone;
   private String workPhone;
+  private String address;
 
 //  public ContactData(String firstname, String middlename, String lastname, String homePhone, String email, String group) {
 
@@ -73,6 +74,12 @@ public class ContactData {
     return this;
   }
 
+  public ContactData withAddress(String address) {
+    this.address = address;
+    return this;
+  }
+
+
   public ContactData withEmail(String email) {
     this.email = email;
     return this;
@@ -119,8 +126,10 @@ public class ContactData {
     if (firstname != null ? !firstname.equals(that.firstname) : that.firstname != null) return false;
     if (lastname != null ? !lastname.equals(that.lastname) : that.lastname != null) return false;
     if (homePhone != null ? !homePhone.equals(that.homePhone) : that.homePhone != null) return false;
+    if (email != null ? !email.equals(that.email) : that.email != null) return false;
     if (mobilePhone != null ? !mobilePhone.equals(that.mobilePhone) : that.mobilePhone != null) return false;
-    return workPhone != null ? workPhone.equals(that.workPhone) : that.workPhone == null;
+    if (workPhone != null ? !workPhone.equals(that.workPhone) : that.workPhone != null) return false;
+    return address != null ? address.equals(that.address) : that.address == null;
 
   }
 
@@ -130,8 +139,10 @@ public class ContactData {
     result = 31 * result + (firstname != null ? firstname.hashCode() : 0);
     result = 31 * result + (lastname != null ? lastname.hashCode() : 0);
     result = 31 * result + (homePhone != null ? homePhone.hashCode() : 0);
+    result = 31 * result + (email != null ? email.hashCode() : 0);
     result = 31 * result + (mobilePhone != null ? mobilePhone.hashCode() : 0);
     result = 31 * result + (workPhone != null ? workPhone.hashCode() : 0);
+    result = 31 * result + (address != null ? address.hashCode() : 0);
     return result;
   }
 
@@ -142,8 +153,14 @@ public class ContactData {
             ", firstname='" + firstname + '\'' +
             ", lastname='" + lastname + '\'' +
             ", homePhone='" + homePhone + '\'' +
+            ", email='" + email + '\'' +
             ", mobilePhone='" + mobilePhone + '\'' +
             ", workPhone='" + workPhone + '\'' +
+            ", address='" + address + '\'' +
             '}';
   }
+
+  public String getAddress() { return address; }
+
+
 }

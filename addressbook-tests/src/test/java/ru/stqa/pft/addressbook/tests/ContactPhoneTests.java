@@ -44,6 +44,12 @@ public class ContactPhoneTests extends TestBase{
             .collect(Collectors.joining("\n"));
   }
 
+  private String mergeEmails(ContactData contact) {
+    return Arrays.asList(contact.getEmail(), contact.getEmail2(), contact.getEmail3())
+            .stream().filter((s) -> ! s.equals(""))
+            .collect(Collectors.joining("\n"));
+  }
+
   public static String cleaned (String phone) {
     return phone.replaceAll("\\s", "").replaceAll("[-()]", "");
   }
@@ -54,7 +60,7 @@ public class ContactPhoneTests extends TestBase{
     ContactData contact = app.contact().alls().iterator().next();
     ContactData contactInfoFromEditForm = app.contact().infoFromEditForm(contact);
 
-    assertThat(contact.getEmail(), equalTo(contactInfoFromEditForm.getEmail()));
+    assertThat(contact.getAllEmails(), equalTo(mergeEmails(contactInfoFromEditForm)));
   }
 
   @Test

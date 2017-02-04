@@ -51,7 +51,7 @@ public class ContactPhoneTests extends TestBase{
     ContactData contact = app.contact().alls().iterator().next();
     ContactData contactInfoFromEditForm = app.contact().infoFromEditForm(contact);
 
-    assertThat(contact.getEmail(), equalTo(contactInfoFromEditForm.getEmail()));
+    assertThat(contact.getAddress(), equalTo(contactInfoFromEditForm.getAddress()));
   }
 
 }

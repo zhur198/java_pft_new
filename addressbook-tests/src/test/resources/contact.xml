@@ -1,0 +1,32 @@
+<list>
+  <contact>
+    <id>2147483647</id>
+    <firstname>Ivan 0</firstname>
+    <lastname>Ivanov 0</lastname>
+    <homePhone>111-11-1110</homePhone>
+    <email>Ivanov0@gmail.com</email>
+    <mobilePhone>222-22-2220</mobilePhone>
+    <workPhone>333-33-3330</workPhone>
+    <address>123 Main st. # 0, Chicago, IL</address>
+  </contact>
+  <contact>
+    <id>2147483647</id>
+    <firstname>Ivan 1</firstname>
+    <lastname>Ivanov 1</lastname>
+    <homePhone>111-11-1111</homePhone>
+    <email>Ivanov1@gmail.com</email>
+    <mobilePhone>222-22-2221</mobilePhone>
+    <workPhone>333-33-3331</workPhone>
+    <address>123 Main st. # 1, Chicago, IL</address>
+  </contact>
+  <contact>
+    <id>2147483647</id>
+    <firstname>Ivan 2</firstname>
+    <lastname>Ivanov 2</lastname>
+    <homePhone>111-11-1112</homePhone>
+    <email>Ivanov2@gmail.com</email>
+    <mobilePhone>222-22-2222</mobilePhone>
+    <workPhone>333-33-3332</workPhone>
+    <address>123 Main st. # 2, Chicago, IL</address>
+  </contact>
+</list>

@@ -1,0 +1,29 @@
+[
+  {
+    "firstname": "Ivan 0",
+    "lastname": "Ivanov 0",
+    "homePhone": "111-11-1110",
+    "email": "Ivanov0@gmail.com",
+    "mobilePhone": "222-22-2220",
+    "workPhone": "333-33-3330",
+    "address": "123 Main st. # 0, Chicago, IL"
+  },
+  {
+    "firstname": "Ivan 1",
+    "lastname": "Ivanov 1",
+    "homePhone": "111-11-1111",
+    "email": "Ivanov1@gmail.com",
+    "mobilePhone": "222-22-2221",
+    "workPhone": "333-33-3331",
+    "address": "123 Main st. # 1, Chicago, IL"
+  },
+  {
+    "firstname": "Ivan 2",
+    "lastname": "Ivanov 2",
+    "homePhone": "111-11-1112",
+    "email": "Ivanov2@gmail.com",
+    "mobilePhone": "222-22-2222",
+    "workPhone": "333-33-3332",
+    "address": "123 Main st. # 2, Chicago, IL"
+  }
+]

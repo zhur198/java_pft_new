@@ -1,31 +1,35 @@
 package ru.stqa.pft.addressbook.tests;
 
+import com.thoughtworks.xstream.XStream;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
 
-import java.io.File;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.testng.Assert.assertEquals;
 
 public class CreateNewContactTests extends TestBase{
 
     @DataProvider
-    public Iterator<Object[]> validContacts() {
-        List<Object[]> list = new ArrayList<Object[]>();
-        list.add(new Object[] {new ContactData().withFirstname("Ivan 1").withMiddlename("M1").withLastname("Ivaniv 1").withHomePhone("107-499-0809")
-                .withEmail("ivaniv1@somemail.com").withGroup("test1").withWorkPhone("356543").withMobilePhone("999999999")});
-        list.add(new Object[] {new ContactData().withFirstname("Ivan 2").withMiddlename("M2").withLastname("Ivaniv 2").withHomePhone("207-499-0809")
-                .withEmail("ivaniv2@somemail.com").withGroup("test1").withWorkPhone("356543").withMobilePhone("999999999")});
-        list.add(new Object[] {new ContactData().withFirstname("Ivan 3").withMiddlename("M3").withLastname("Ivaniv 3").withHomePhone("307-499-0809")
-                .withEmail("ivaniv3@somemail.com").withGroup("test1").withWorkPhone("356543").withMobilePhone("999999999")});
-        return list.iterator();
+    public Iterator<Object[]> validContacts() throws IOException {
+        BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/contact.xml")));
+        String xml = "";
+        String line = reader.readLine();
+        while (line != null) {
+            xml += line;
+            line = reader.readLine();
+        }
+        XStream xstream = new XStream();
+        xstream.processAnnotations(ContactData.class);
+        List<ContactData> contacts = (List<ContactData>) xstream.fromXML(xml);
+        return contacts.stream().map((c) -> new Object[] {c}).collect(Collectors.toList()).iterator();
     }
 
     @Test (dataProvider = "validContacts")

@@ -66,6 +66,15 @@ public class GroupDataGenerator {
     writer.close();
   }
 
+//    Close writer with "try" functionality
+    private void saveAsJSONTry(List<GroupData> groups, File file) throws IOException {
+    Gson gson = new GsonBuilder().setPrettyPrinting().excludeFieldsWithoutExposeAnnotation().create();
+    String json = gson.toJson(groups);
+    try (Writer writer = new FileWriter(file)) {
+      writer.write(json);
+    }
+  }
+
   private void saveAsXML(List<GroupData> groups, File file) throws IOException {
     XStream xstream = new XStream();
     xstream.processAnnotations(GroupData.class);

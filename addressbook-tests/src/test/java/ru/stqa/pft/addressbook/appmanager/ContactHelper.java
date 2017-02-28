@@ -189,4 +189,35 @@ public class ContactHelper extends HelperBase {
 //    wd.findElement(By.xpath(String.format("//tr[.//input[@value='%s']]/td[8]/a", id))).click();
 //    wd.findElement(By.cssSelector(String.format("a[href='edit.php?id=%s']", id))).click();
   }
+
+  public ContactData infoFromViewForm(ContactData contact) {
+    initContactViewById (contact.getId());
+    String firstname = wd.findElement(By.xpath(".//*[@id='content']/b")).getText().split("\\s+")[0];
+//    System.out.println(firstname);
+    String lastname = wd.findElement(By.xpath(".//*[@id='content']/b")).getText().split("\\s+")[2];
+//    System.out.println(lastname);
+    String address = wd.findElement(By.xpath(".//*[@id='content']")).getText().split("\n")[1];
+//    System.out.println(address);
+    String home = wd.findElement(By.xpath(".//*[@id='content']")).getText().split("\n")[3].replace("H:", "").replace(" ", "");
+//    System.out.println(home);
+    String mobile = wd.findElement(By.xpath(".//*[@id='content']")).getText().split("\n")[4].replace("M:", "").replace(" ", "");
+//    System.out.println(mobile);
+    String work = wd.findElement(By.xpath(".//*[@id='content']")).getText().split("\n")[5].replace("W:", "").replace(" ", "");
+//    System.out.println(work);
+    String email = wd.findElement(By.xpath(".//*[@id='content']")).getText().split("\n")[7];
+//    System.out.println(email);
+    String email2 = wd.findElement(By.xpath(".//*[@id='content']")).getText().split("\n")[8];
+//    System.out.println(email2);
+    String email3 = wd.findElement(By.xpath(".//*[@id='content']")).getText().split("\n")[9];
+//    System.out.println(email3);
+    wd.navigate().back();
+    return new ContactData().withId(contact.getId()).withFirstname(firstname).withLastname(lastname).withAddress(address)
+            .withHomePhone(home).withMobilePhone(mobile).withWorkPhone(work).withEmail(email).withEmail2(email2).withEmail3(email3).withAddress(address);
+  }
+
+  private void initContactViewById(int id) {
+    WebElement checkbox = wd.findElement(By.cssSelector(String.format("input[value='%s']", id)));
+    wd.findElement(By.cssSelector(String.format("a[href='view.php?id=%s']", id))).click();
+  }
 }
+

@@ -53,4 +53,18 @@ public class ConatctFormVerificationTests extends TestBase{
   public static String cleaned (String phone) {
     return phone.replaceAll("\\s", "").replaceAll("[-()]", "");
   }
+
+  @Test
+
+  public void testContactViewFormVerification() {
+    ContactData contact = app.contact().alls().iterator().next();
+    ContactData contactInfoFromEditForm = app.contact().infoFromEditForm(contact);
+    ContactData contactInfoFromViewForm = app.contact().infoFromViewForm(contact);
+
+    assertThat(contactInfoFromEditForm.getFirstname(), equalTo(contactInfoFromViewForm.getFirstname()));
+    assertThat(contactInfoFromEditForm.getLastname(), equalTo(contactInfoFromViewForm.getLastname()));
+    assertThat(contactInfoFromEditForm.getAddress(), equalTo(contactInfoFromViewForm.getAddress()));
+    assertThat(mergeEmails(contactInfoFromEditForm), equalTo(mergeEmails(contactInfoFromViewForm)));
+    assertThat(mergePhones(contactInfoFromEditForm), equalTo(mergePhones(contactInfoFromViewForm)));
+  }
 }
